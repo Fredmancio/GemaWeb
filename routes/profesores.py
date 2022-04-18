@@ -1,9 +1,8 @@
-
-
-from flask import Blueprint, render_template, request
+from flask import Blueprint, flash, render_template, request, redirect, url_for
 from models.profesor import Profesor
 from models.instrumento import Instrumento
 from utils.db import db
+from werkzeug.security import check_password_hash, generate_password_hash
 
 profesores = Blueprint("profesores", __name__)
 
@@ -25,9 +24,11 @@ def guardar_profesor():
     password = request.form['password']
     instrumento = request.form.get('instrumento')
 
-    nuevo_profesor = Profesor(nombre, apellido_1, apellido_2, email, password, instrumento)
+    password_hash = generate_password_hash(password)
+
+    nuevo_profesor = Profesor(nombre, apellido_1, apellido_2, email, password_hash, instrumento)
     db.session.add(nuevo_profesor)
     db.session.commit()
+    flash("Profesor Creado")
     
-
-    return render_template("profesores/new_profesor.html", profesores=profesores)
+    return redirect('/profesores')
