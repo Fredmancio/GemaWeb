@@ -22,26 +22,26 @@
                     <div class="card-heading">
                         <h2 class="title">Añadir nuevo profesor</h2>
                         <div class="card-body">
-                            <form class="registration-form" action="/profesores/new" method="POST">
+                            <form class="registration-form" action="/gestion_profesores/new_profesor" method="POST">
 
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="nombreProfesor"
-                                        placeholder="Nombre">
+                                        placeholder="Nombre" required="true">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="apellido1"
-                                        placeholder="Primer Apellido">
+                                        placeholder="Primer Apellido" required="true">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="apellido2"
-                                        placeholder="Segundo Apellido">
+                                        placeholder="Segundo Apellido" required="true">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control item" name="email"
-                                        placeholder="Correo Electrónico">
+                                        placeholder="Correo Electrónico" required="true">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control item" name="password" placeholder="Password">
+                                    <input type="text" class="form-control item" name="password" placeholder="Password" required="true">
                                 </div>
                                 <div class="form-group">
                                     <p>Selecciona un instrumento</p>

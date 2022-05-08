@@ -5,17 +5,18 @@ from models.instrumento import Instrumento
 from utils.db import db
 from werkzeug.security import check_password_hash, generate_password_hash
 
-profesores = Blueprint("profesores", __name__)
+admin = Blueprint("admin", __name__)
 
 
-@profesores.route("/profesores")
-def home_profesores():
+@admin.route("/gestion_profesores")
+@login_required
+def gestion_profesores():
 #-- Template de profesores
     instrumentos = Instrumento.query.all()
     profesores = Profesor.query.all()
-    return render_template("profesores/profesores.html", profesores=profesores, instrumentos=instrumentos)
+    return render_template("admin/gestion_profesores.html", profesores=profesores, instrumentos=instrumentos)
 
-@profesores.route("/profesores/new", methods=['POST'])
+@admin.route("/gestion_profesores/new_profesor", methods=['POST'])
 @login_required
 def guardar_profesor():
     
@@ -33,4 +34,4 @@ def guardar_profesor():
     db.session.commit()
     flash("Profesor Creado")
     
-    return redirect('/profesores')
+    return redirect('/gestion_profesores')

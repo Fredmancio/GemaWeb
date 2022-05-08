@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, request, flash
 from models.profesor import *
 from routes.instrumentos import instrumentos
-from routes.profesores import profesores
+from routes.admin import admin
 from flask_sqlalchemy import SQLAlchemy
 from utils.db import db
 from flask_login import (
@@ -33,7 +33,7 @@ def load_user(user_id):
 #-------------------------------------------
 
 app.register_blueprint(instrumentos)
-app.register_blueprint(profesores)
+app.register_blueprint(admin)
 
 
 @app.route("/login", methods=['GET', 'POST'])
