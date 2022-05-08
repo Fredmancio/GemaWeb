@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for, request, flash
 from models.profesor import *
 from routes.instrumentos import instrumentos
 from routes.profesores import profesores
@@ -44,15 +44,23 @@ def login():
         user = Profesor.query.filter_by(email = request.form['usuario']).first()
         print(user)
         if user:
-            print("llego aqui")
             if check_password_hash(user.password, request.form['password']):
                 login_user(user)
-                return redirect(url_for('home'))
+                flash('Correctamente conectado')
+                return redirect(url_for('home'))                
             else:
                 print("no hay usuario")
     return render_template("auth/login.html")
 
-@app.route('/home', methods=['GET', 'POST'])
+
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    logout_user()
+    flash('Desconectado correctamente')
+    return redirect(url_for('login'))
+
+
+@app.route("/home", methods=['GET', 'POST'])
 @login_required
 def home():
     return render_template('/home.html')

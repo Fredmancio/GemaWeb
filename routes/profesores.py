@@ -1,4 +1,5 @@
 from flask import Blueprint, flash, render_template, request, redirect, url_for
+from flask_login import login_required
 from models.profesor import Profesor
 from models.instrumento import Instrumento
 from utils.db import db
@@ -15,6 +16,7 @@ def home_profesores():
     return render_template("profesores/profesores.html", profesores=profesores, instrumentos=instrumentos)
 
 @profesores.route("/profesores/new", methods=['POST'])
+@login_required
 def guardar_profesor():
     
     nombre = request.form['nombreProfesor']
