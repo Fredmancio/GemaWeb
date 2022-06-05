@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm">
+        <div class="formulario-profesor shadow">
+            <div class="card-5">
+                <div class="card-heading">
+                    <h2 class="title">Modificar alumno</h2>
+                    <div class="card-body">
+                        <form class="registration-form" action="{{url_for('admin.formulario_update_alumno', id=alumno_to_update.codigo)}}" method="POST">
+
+                            <div class="form-group">
+                                <input type="text" value="{{alumno_to_update.nombre}}" class="form-control item"
+                                    name="nombreAlumno" required="true">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="{{alumno_to_update.apellido_1}}" class="form-control item"
+                                    name="apellido1" required="true">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="{{alumno_to_update.apellido_2}}" class="form-control item"
+                                    name="apellido2" required="true">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="{{alumno_to_update.email}}" class="form-control item"
+                                    name="email" required="true">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" value="{{alumno_to_update.password}}" class="form-control item"
+                                    name="password" required="true">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block crear-profesor">Modificar Alumno</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock%}

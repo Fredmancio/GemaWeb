@@ -1,0 +1,140 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm">
+        <div class="formulario-profesor shadow">
+            <div class="card-5">
+                <div class="card-heading">
+                    <h2 class="title">Primer Trimestre</h2>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Comportamiento</th>
+                                        <th scope="col">Sonido</th>
+                                        <th scope="col">Lectura</th>
+                                        <th scope="col">Precision</th>
+                                        <th scope="col">Técnica</th>
+                                        <th scope="col">Programa</th>
+                                        <th scope="col">Estudio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for evaluacion in primera_evaluacion %}
+                                    <tr>
+                                        <td>{{evaluacion.alumno}}</td>
+                                        <td>{{evaluacion.fecha}}</td>
+                                        <td>{{evaluacion.comportamiento}}</td>
+                                        <td>{{evaluacion.sonido}}</td>
+                                        <td>{{evaluacion.lectura}}</td>
+                                        <td>{{evaluacion.preci}}</td>
+                                        <td>{{evaluacion.tecnica}}</td>
+                                        <td>{{evaluacion.programa}}</td>
+                                        <td>{{evaluacion.estudio}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="formulario-profesor shadow">
+            <div class="card-5">
+                <div class="card-heading">
+                    <h2 class="title">Segundo Trimestre</h2>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Comportamiento</th>
+                                        <th scope="col">Sonido</th>
+                                        <th scope="col">Lectura</th>
+                                        <th scope="col">Precision</th>
+                                        <th scope="col">Técnica</th>
+                                        <th scope="col">Programa</th>
+                                        <th scope="col">Estudio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for evaluacion in segunda_evaluacion %}
+                                    <tr>
+                                        <td>{{evaluacion.alumno}}</td>
+                                        <td>{{evaluacion.fecha}}</td>
+                                        <td>{{evaluacion.comportamiento}}</td>
+                                        <td>{{evaluacion.sonido}}</td>
+                                        <td>{{evaluacion.lectura}}</td>
+                                        <td>{{evaluacion.preci}}</td>
+                                        <td>{{evaluacion.tecnica}}</td>
+                                        <td>{{evaluacion.programa}}</td>
+                                        <td>{{evaluacion.estudio}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm">
+        <div class="formulario-profesor shadow">
+            <div class="card-5">
+                <div class="card-heading">
+                    <h2 class="title">Tercer Trimestre</h2>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Comportamiento</th>
+                                        <th scope="col">Sonido</th>
+                                        <th scope="col">Lectura</th>
+                                        <th scope="col">Precision</th>
+                                        <th scope="col">Técnica</th>
+                                        <th scope="col">Programa</th>
+                                        <th scope="col">Estudio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for evaluacion in tercera_evaluacion %}
+                                    <tr>
+                                        <td>{{evaluacion.alumno}}</td>
+                                        <td>{{evaluacion.fecha}}</td>
+                                        <td>{{evaluacion.comportamiento}}</td>
+                                        <td>{{evaluacion.sonido}}</td>
+                                        <td>{{evaluacion.lectura}}</td>
+                                        <td>{{evaluacion.preci}}</td>
+                                        <td>{{evaluacion.tecnica}}</td>
+                                        <td>{{evaluacion.programa}}</td>
+                                        <td>{{evaluacion.estudio}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

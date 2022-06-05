@@ -1,0 +1,124 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm">
+        <div class="formulario-profesor shadow">
+            <div class="card-5">
+                <div class="card-heading">
+                    <h2 class="title">{{evaluacion}}</h2>
+                    <div class="card-body">
+                        <form class="registration-form" action="{{url_for('profesores.guardar_evaluacion', idprofe = profesor, idalumno = alumno.codigo, idtrimestre = trimestre)}}" method="POST">
+
+                            <div class="d-flex justify-content-between bg-primary text-white mb-4">
+                                <div class="p-3">
+                                    <h5>{{alumno.nombre}} {{alumno.apellido_1}} {{alumno.apellido_2}}</h5>
+                                </div>
+                                <div class="p-3">
+                                    <h5>{{format_fecha}}</h5>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group row">
+                                <label for="comportamiento" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Comportamiento</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="comportamiento" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="sonido" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Sonido</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="sonido" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lectura" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Lectura</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="lectura" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="precision" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Precisión</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="precision" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="tecnica" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Técnica</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="tecnica" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="programa" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Programa</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="programa" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="estudio" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Estudio</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="estudio" required="true">
+                                        <option disabled selected value="">Selecciona</option>
+                                        <option value="PA">P.A.</option>
+                                        <option value="NM">N.M.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="comentarios" class="col-sm-2 col-form-label">
+                                    <h5 class="text-end text-primary">Comentarios</h5>
+                                </label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="comentarios" rows="3" maxlength="100"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block crear-profesor">Finalizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

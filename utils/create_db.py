@@ -4,7 +4,7 @@ mydb = mysql.connector.connect(host="localhost", user="root", passwd="abc2805198
 
 my_cursor = mydb.cursor()
 
-#my_cursor.execute("CREATE DATABASE gema")
+my_cursor.execute("CREATE DATABASE gemaweb")
 
 my_cursor.execute("SHOW DATABASES")
 

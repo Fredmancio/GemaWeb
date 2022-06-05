@@ -8,6 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     {% if current_user.is_authenticated %}
+    {% if current_user.codigo == 1 %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -16,56 +17,59 @@
           <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Alumnos</a>
+          <a class="nav-link" href="{{url_for('admin.gestion_profesores')}}">Gestionar Profesores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Partituras</a>
+          <a class="nav-link" href="{{url_for('admin.gestion_alumnos')}}">Gestionar Alumnos</a>
         </li>
-        {% if current_user.idprofesor == 1 %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Admin
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{url_for('admin.gestion_profesores')}}">Gestionar Profesores</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('admin.listar_clases')}}">Gestionar Clases</a>
+        </li>
+        {% else %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('profesores.ver_horario')}}">Mi Horario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('profesores.subir_partituras')}}">Partituras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('profesores.ver_evaluaciones')}}">Mis Evaluaciones</a>
+            </li>
+            {% endif %}
           </ul>
-        </li>
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+              data-bs-display="static" aria-expanded="false">
+              {{current_user.nombre}}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><button class="dropdown-item" type="button">Action</button></li>
+              <li><button class="dropdown-item" type="button">Another action</button></li>
+              <li><button type="button" class="btn btn-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z">
+                    </path>
+                    <path fill-rule="evenodd"
+                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z">
+                    </path>
+                  </svg>
+                  Logout
+                </button></li>
+            </ul>
+          </div>
+
+
+        </div>
+        {% else %}
         {% endif %}
-      </ul>
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-          data-bs-display="static" aria-expanded="false">
-          {{current_user.nombre}}
-        </button>
-        <ul class="dropdown-menu dropdown-menu-lg-end">
-          <li><button class="dropdown-item" type="button">Action</button></li>
-          <li><button class="dropdown-item" type="button">Another action</button></li>
-          <li><button type="button" class="btn btn-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z">
-                </path>
-                <path fill-rule="evenodd"
-                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z">
-                </path>
-              </svg>
-              Logout
-            </button></li>
-        </ul>
-      </div>
-
-
     </div>
-    {% else %}
-    {% endif %}
-  </div>
 </nav>
 
 <div class="col-sm text-center">
@@ -77,6 +81,7 @@
     <strong>{{ message }}</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+
 
   {% endfor %}
   {% endif %}

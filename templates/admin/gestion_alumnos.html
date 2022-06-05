@@ -8,12 +8,12 @@
         <div class="formulario-profesor shadow">
             <div class="card-5">
                 <div class="card-heading">
-                    <h2 class="title">Añadir nuevo profesor</h2>
+                    <h2 class="title">Añadir nuevo Alumno</h2>
                     <div class="card-body">
-                        <form class="registration-form" action="/gestion_profesores/new_profesor" method="POST">
+                        <form class="registration-form" action="{{url_for('admin.guardar_alumno')}}" method="POST">
 
                             <div class="form-group">
-                                <input type="text" class="form-control item" name="nombreProfesor" placeholder="Nombre"
+                                <input type="text" class="form-control item" name="nombreAlumno" placeholder="Nombre"
                                     required="true">
                             </div>
                             <div class="form-group">
@@ -27,21 +27,14 @@
                             <div class="form-group">
                                 <input type="text" class="form-control item" name="email"
                                     placeholder="Correo Electrónico" required="true">
-                            </div>
+                            </div>                            
                             <div class="form-group">
-                                <input type="text" value="{{password}}" class="form-control item" name="password"
-                                    placeholder="Password" required="true">
+                                <input type="text" value="{{password}}" class="form-control item" name="password" placeholder="Password"
+                                    required="true">
                             </div>
+                            
                             <div class="form-group">
-                                <p>Selecciona una materia</p>
-                                <select class="form-select" name="materia">
-                                    {% for materia in materias %}
-                                    <option value={{materia.codigo}}>{{materia.nombre}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-block crear-profesor">Crear Profesor</button>
+                                <button type="submit" class="btn btn-block crear-profesor">Crear Alumno</button>
                             </div>
                         </form>
                     </div>
@@ -55,7 +48,7 @@
         <div class="formulario-profesor shadow">
             <div class="card-5">
                 <div class="card-heading">
-                    <h2 class="title">Lista de Profesores</h2>
+                    <h2 class="title">Lista de Alumnos</h2>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -69,15 +62,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for profesor in profesores %}
-                                    {% if profesor.nombre != 'admin' %}
+                                    {% for alumno in alumnos %}
                                     <tr>
-                                        <th scope="row">{{profesor.codigo}}</th>
-                                        <td>{{profesor.nombre}}</td>
-                                        <td>{{profesor.apellido_1}}</td>
-                                        <td>{{profesor.apellido_2}}</td>
-                                        <td>{{profesor.email}}</td>
-                                        <td><a href="{{url_for('admin.mostrar_perfil_profesor', id=profesor.codigo)}}"
+                                        <th scope="row">{{alumno.alumno}}</th>
+                                        <td>{{alumno.nombre}}</td>
+                                        <td>{{alumno.apellido_1}}</td>
+                                        <td>{{alumno.apellido_2}}</td>
+                                        <td>{{alumno.email}}</td>
+                                        <td><a href="{{url_for('admin.mostrar_perfil_alumno', id=alumno.codigo)}}"
                                                 type="button" class="btn btn-primary flex-grow-1"><svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -86,7 +78,6 @@
                                                         d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                                 </svg></a></td>
                                     </tr>
-                                    {% endif %}
                                     {% endfor %}
                                 </tbody>
                             </table>

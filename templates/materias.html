@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% block content%}
+<div>
+    {% for materia in materias %}
+
+    <div>
+
+        <h5>{{materia.nombre}}</h5>
+        <p>{{materia.familia}}</p>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% for clase in clases %}
+<div class="container">
+  <div class="card w-75">
+    <div class="card-body">
+      <h5 class="card-title">{{clase.alumno}}</h5>
+      <h6 class="card-title">{{clase.dia}} {{clase.hora}}</h6>
+      <h6 class="text-primary">Deberes</h6>
+      <p class="card-text">{{clase.deberes}}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDeberes">
+            Poner Tareas
+          </button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Evaluar
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{url_for('profesores.mostrar_primera_evaluacion', idalumno = clase.codigo_alumno)}}">1ª Evaluación</a></li>
+              <li><a class="dropdown-item" href="{{url_for('profesores.mostrar_segunda_evaluacion', idalumno = clase.codigo_alumno)}}">2ª Evaluación</a></li>
+              <li><a class="dropdown-item" href="{{url_for('profesores.mostrar_tercera_evaluacion', idalumno = clase.codigo_alumno)}}">3ª Evaluación</a></li>
+            </ul>
+          </div>
+        </div>     
+    </div>
+  </div>      
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDeberes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tareas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="registration-form" action="{{url_for('profesores.poner_deberes', idprofe = clase.codigo_profesor, idalumno = clase.codigo_alumno, idhorario = clase.codigo_horario)}}" method="POST">
+        <div class="form-group">
+          <textarea class="form-control rounded-0" name="deberes" rows="5" maxlength="500"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>        
+      </form>      
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

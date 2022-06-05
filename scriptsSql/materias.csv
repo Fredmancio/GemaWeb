@@ -1,0 +1,18 @@
+codigo,nombre,familia
+1,Batería,Percusión
+2,Canto,Voz
+3,Clarinete,"Viento Madera"
+4,Contrabajo,Cuerda
+5,Fagot,"Viento Madera"
+6,Flauta,"Viento Madera"
+7,Oboe,"Viento Madera"
+8,Percusión,Percusión
+9,Piano,"Cuerda Percutida"
+10,Saxofón,"Viento Madera"
+11,Trombón,"Viento Metal"
+12,Trompa,"Viento Metal"
+13,Trompeta,"Viento Metal"
+14,Tuba,"Viento Metal"
+15,Viola,Cuerda
+16,Violín,Cuerda
+17,Violoncello,Cuerda

@@ -1,7 +1,8 @@
 from flask import Flask, redirect, render_template, url_for, request, flash
 from models.profesor import *
-from routes.instrumentos import instrumentos
+from routes.materias import materias
 from routes.admin import admin
+from routes.profesores import profesores
 from flask_sqlalchemy import SQLAlchemy
 from utils.db import db
 from flask_login import (
@@ -15,7 +16,7 @@ from flask_login import (
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:abc28051987A@localhost/gemadb"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:abc28051987A@localhost/escuela_musica"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.config["SECRET_KEY"] = "bonditalagordita"
@@ -32,8 +33,9 @@ def load_user(user_id):
     return Profesor.query.get(int(user_id))
 #-------------------------------------------
 
-app.register_blueprint(instrumentos)
+app.register_blueprint(materias)
 app.register_blueprint(admin)
+app.register_blueprint(profesores)
 
 
 @app.route("/login", methods=['GET', 'POST'])
